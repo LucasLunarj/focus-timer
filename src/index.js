@@ -51,6 +51,7 @@ function startTimer() {
 
     if (secondsValue <= 0 && minutesValue < 0) {
         timerFinishedSound.play()
+        currentSound.stop
         stopTimer()
     }
 
