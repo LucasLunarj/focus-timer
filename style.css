@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.page {
+  margin: auto;
+  height: 100vh;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+main span {
+  color: #323238;
+  font-family: "Roboto", sans-serif;
+  font-size: 11rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.3rem;
+}
+
+.controls img {
+  cursor: pointer;
+}
+
+.controls img:hover {
+}
+
+.music-menu {
+  display: grid;
+  gap: 3.2rem;
+  grid-template-columns: 1fr 1fr;
+}
+.music-menu svg {
+  fill: #e1e1e6;
+  color: #323238;
+  cursor: pointer;
+}
+
+.music-menu svg:hover {
+  fill: #d5d5e2;
+}
+
+.selected {
+  color: white;
+  fill: #02799d;
+}
+
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+  }
+}
