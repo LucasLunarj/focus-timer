@@ -4,11 +4,11 @@ const rainButton = document.querySelector('.rain-button')
 const fireButton = document.querySelector('.fire-button')
 const cafeteriaButton = document.querySelector('.cafeteria-button')
 
-const forestSound = new Audio('../assets/sounds/Floresta.wav')
-const rainSound = new Audio('../assets/sounds/Chuva.wav')
-const fireSound = new Audio('../assets/sounds/Lareira.wav')
+const forestSound = new Audio('./assets/sounds/Floresta.wav')
+const rainSound = new Audio('./assets/sounds/Chuva.wav')
+const fireSound = new Audio('./assets/sounds/Lareira.wav')
 const cafeteriaSound = new Audio('../assets/sounds/Cafeteria.wav')
-const timerFinishedSound = new Audio('../assets/sounds/timer-sound.mp3')
+const timerFinishedSound = new Audio('./assets/sounds/timer-sound.mp3')
 
 
 
