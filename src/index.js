@@ -15,7 +15,7 @@ const timerFinishedSound = new Audio('../assets/sounds/timer-sound.mp3')
 const minutes = document.querySelector('.minutes')
 const seconds = document.querySelector('.seconds')
 
-let onOff = false
+
 let timeout;
 const start = document.querySelector('.start')
 const stop = document.querySelector('.stop')
@@ -43,8 +43,6 @@ function startTimer() {
     console.log(secondsValue)
     timeout = setTimeout(startTimer, 1000)
 
-
-
     if (secondsValue == -1) {
         seconds.textContent = 59
         minutesValue = minutesValue - 1
@@ -52,18 +50,17 @@ function startTimer() {
     }
 
     if (secondsValue <= 0 && minutesValue < 0) {
+        timerFinishedSound.play()
         stopTimer()
     }
 
 
 }
 
-
-
 stop.addEventListener('click', stopTimer)
 
 function stopTimer() {
-    minutes.textContent = `00`
+    minutes.textContent = `05`
     seconds.textContent = `00`
     clearTimeout(timeout)
     currentSound.pause()
@@ -87,8 +84,10 @@ function increase() {
 minus.addEventListener('click', decrease)
 
 function decrease() {
+
+
     let minutesData = Number(minutes.textContent)
-    if (minutesData == 0) {
+    if (minutesData == 0 || minutesData < 5) {
         return
     }
 
