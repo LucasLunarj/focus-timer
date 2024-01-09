@@ -1,13 +1,13 @@
-//buttons
+
 const treeButton = document.querySelector('.tree-button')
 const rainButton = document.querySelector('.rain-button')
 const fireButton = document.querySelector('.fire-button')
-const musicMenu = document.querySelector('.music-menu')
+const cafeteriaButton = document.querySelector('.cafeteria-button')
 
 const forestSound = new Audio('../assets/sounds/Floresta.wav')
-const rain = new Audio('../assets/sounds/Chuva.wav')
-const fire = new Audio('../assets/sounds/Lareira.wav')
-const cafeteria = new Audio('../assets/sounds/Cafeteria.wav')
+const rainSound = new Audio('../assets/sounds/Chuva.wav')
+const fireSound = new Audio('../assets/sounds/Lareira.wav')
+const cafeteriaSound = new Audio('../assets/sounds/Cafeteria.wav')
 const timerFinishedSound = new Audio('../assets/sounds/timer-sound.mp3')
 
 
@@ -22,7 +22,7 @@ const stop = document.querySelector('.stop')
 const plus = document.querySelector('.plus')
 const minus = document.querySelector('.minus')
 
-
+let currentSound = null
 
 
 start.addEventListener('click', startTimer)
@@ -36,7 +36,7 @@ function startTimer() {
 
     secondsValue--
 
-
+    currentSound.play()
 
     seconds.textContent = `${String(secondsValue).padStart(2, '0')}`
 
@@ -66,6 +66,7 @@ function stopTimer() {
     minutes.textContent = `00`
     seconds.textContent = `00`
     clearTimeout(timeout)
+    currentSound.pause()
 }
 
 plus.addEventListener('click', increase)
@@ -96,82 +97,46 @@ function decrease() {
     minutes.textContent = `${String(minutesData).padStart(2, '0')}`
 }
 
-musicMenu.addEventListener('click', soundMenu)
 
-function soundMenu() {
-    console.log('clicou')
+treeButton.addEventListener('click', playForestsound)
 
-
+function playForestsound() {
+    treeButton.style.fill = '#02799D'
+    fireButton.style.fill = '#E1E1E6'
+    rainButton.style.fill = '#E1E1E6'
+    cafeteriaButton.style.fill = '#E1E1E6'
+    currentSound = forestSound
 }
 
-// treeButton.addEventListener('click', playForestsound)
-
-// function playForestsound() {
-//     treeButton.style.color = 'white'
-//     rainButton.style.fill = '#E1E1E6'
-//     treeButton.style.fill = '#02799D'
-//     forestSound.play()
-//     rain.pause()
-
-//     if (onOff === false) {
 
 
-//         console.log(onOff)
+rainButton.addEventListener('click', playRainsound)
+
+function playRainsound() {
+    rainButton.style.fill = '#02799D'
+    treeButton.style.fill = '#E1E1E6'
+    fireButton.style.fill = '#E1E1E6'
+    cafeteriaButton.style.fill = '#E1E1E6'
+    currentSound = rainSound
+}
 
 
-//         onOff = true
-//     } else {
-//         treeButton.style.fill = '#E1E1E6'
-//         forestSound.pause()
-//         onOff = false
-//     }
+fireButton.addEventListener('click', playFire)
 
+function playFire() {
+    fireButton.style.fill = '#02799D'
+    treeButton.style.fill = '#E1E1E6'
+    rainButton.style.fill = '#E1E1E6'
+    cafeteriaButton.style.fill = '#E1E1E6'
+    currentSound = fireSound
+}
 
-//     forestSound.loop = true
+cafeteriaButton.addEventListener('click', playCafeteria)
 
-
-// }
-
-
-
-// rainButton.addEventListener('click', playRainsound)
-
-// function playRainsound() {
-
-//     if (onOff === false) {
-//         rainButton.style.fill = '#02799D'
-//         rain.play()
-//         fire.pause()
-//         forestSound.pause()
-//         onOff = true
-//     } else {
-//         rainButton.style.fill = '#E1E1E6'
-//         rain.pause()
-//         onOff = false
-//     }
-
-//     rain.loop = true
-// }
-
-
-// fireButton.addEventListener('click', playFire)
-
-// function playFire() {
-//     rainButton.style.fill = '#E1E1E6'
-//     treeButton.style.fill = '#E1E1E6'
-
-//     if (onOff === false) {
-//         fireButton.style.fill = '#02799D'
-//         fire.play()
-//         rain.pause()
-//         forestSound.pause()
-//         treeButton.style.fill = '#E1E1E6'
-//         onOff = true
-//     } else {
-//         fireButton.style.fill = '#E1E1E6'
-//         fire.pause()
-//         onOff = false
-//     }
-
-//     fire.loop = true
-// }
+function playCafeteria() {
+    currentSound = cafeteriaSound
+    cafeteriaButton.style.fill = '#02799D'
+    treeButton.style.fill = '#E1E1E6'
+    rainButton.style.fill = '#E1E1E6'
+    fireButton.style.fill = '#E1E1E6'
+}
