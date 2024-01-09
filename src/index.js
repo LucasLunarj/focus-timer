@@ -2,6 +2,7 @@
 const treeButton = document.querySelector('.tree-button')
 const rainButton = document.querySelector('.rain-button')
 const fireButton = document.querySelector('.fire-button')
+const musicMenu = document.querySelector('.music-menu')
 
 const forestSound = new Audio('../assets/sounds/Floresta.wav')
 const rain = new Audio('../assets/sounds/Chuva.wav')
@@ -23,15 +24,12 @@ const minus = document.querySelector('.minus')
 
 
 
+
 start.addEventListener('click', startTimer)
 
 
 
-
-
-
 function startTimer() {
-
 
     let secondsValue = Number(seconds.textContent)
     let minutesValue = Number(minutes.textContent)
@@ -43,7 +41,7 @@ function startTimer() {
     seconds.textContent = `${String(secondsValue).padStart(2, '0')}`
 
     console.log(secondsValue)
-
+    timeout = setTimeout(startTimer, 1000)
 
 
 
@@ -61,9 +59,6 @@ function startTimer() {
 }
 
 
-function timer() {
-
-}
 
 stop.addEventListener('click', stopTimer)
 
@@ -101,8 +96,13 @@ function decrease() {
     minutes.textContent = `${String(minutesData).padStart(2, '0')}`
 }
 
+musicMenu.addEventListener('click', soundMenu)
+
+function soundMenu() {
+    console.log('clicou')
 
 
+}
 
 // treeButton.addEventListener('click', playForestsound)
 
