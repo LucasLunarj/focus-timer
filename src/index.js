@@ -56,10 +56,11 @@ function startTimer() {
         currentSound.play()
     }
 
-    if (secondsValue <= 0 && minutesValue < 0) {
+    if (secondsValue <= 0 && minutesValue <= 0) {
         timerFinishedSound.play()
-        currentSound.stop
         stopTimer()
+        currentSound.stop
+
     }
 
 
@@ -104,7 +105,7 @@ function decrease() {
 
 
     let minutesData = Number(minutes.textContent)
-    if (minutesData == 0 || minutesData < 5) {
+    if (minutesData == 0 || minutesData <= 5) {
         return
     }
 
