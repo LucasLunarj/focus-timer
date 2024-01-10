@@ -22,17 +22,17 @@ const stop = document.querySelector('.stop')
 const plus = document.querySelector('.plus')
 const minus = document.querySelector('.minus')
 
-let currentSound = null
+let currentSound;
 let running = false
 
 start.addEventListener('click', startTimer)
-start.addEventListener('click', isRunning)
+
 
 
 
 function startTimer() {
 
-
+    start.removeEventListener('click', startTimer)
 
     console.log(running)
 
@@ -49,9 +49,11 @@ function startTimer() {
     timeout = setTimeout(startTimer, 1000)
 
     if (secondsValue == -1) {
+
         seconds.textContent = 59
         minutesValue = minutesValue - 1
         minutes.textContent = `${String(minutesValue).padStart(2, '0')}`
+        currentSound.play()
     }
 
     if (secondsValue <= 0 && minutesValue < 0) {
@@ -66,10 +68,19 @@ function startTimer() {
 stop.addEventListener('click', stopTimer)
 
 function stopTimer() {
+    start.addEventListener('click', startTimer)
     minutes.textContent = `05`
     seconds.textContent = `00`
     clearTimeout(timeout)
     currentSound.pause()
+
+    currentSound = ''
+
+    cafeteriaButton.style.fill = '#E1E1E6'
+    treeButton.style.fill = '#E1E1E6'
+    rainButton.style.fill = '#E1E1E6'
+    fireButton.style.fill = '#E1E1E6'
+
 }
 
 plus.addEventListener('click', increase)
