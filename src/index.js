@@ -23,20 +23,25 @@ const plus = document.querySelector('.plus')
 const minus = document.querySelector('.minus')
 
 let currentSound = null
-
+let running = false
 
 start.addEventListener('click', startTimer)
+start.addEventListener('click', isRunning)
 
 
 
 function startTimer() {
+
+
+
+    console.log(running)
 
     let secondsValue = Number(seconds.textContent)
     let minutesValue = Number(minutes.textContent)
 
     secondsValue--
 
-    currentSound.play()
+
 
     seconds.textContent = `${String(secondsValue).padStart(2, '0')}`
 
